@@ -1,3 +1,8 @@
+#![warn(clippy::all, clippy::pedantic, clippy::nursery)]
+
+mod bitvec;
+
+use crate::bitvec::ExpandableBitVec;
 use color_eyre::eyre::bail;
 use owo_colors::OwoColorize;
 use std::{env, fs::read_to_string};
@@ -16,18 +21,23 @@ fn main() -> color_eyre::Result<()> {
     };
     let pat_len = pattern.len();
 
+    let mut bv = ExpandableBitVec::new(256);
     for line in contents.lines() {
-        let matches = get_matches_in_line(line, &pattern, pat_len, 0)
-            .into_iter()
-            .flat_map(|i| (i..i + pat_len).into_iter().collect::<Vec<_>>())
-            .collect::<Vec<_>>();
+        for m in get_matches_in_line(line, &pattern, pat_len, 0) {
+            for index in m..m + pat_len {
+                bv.set(index);
+            }
+        }
+
         for (col, char) in line.chars().enumerate() {
-            if matches.contains(&col) {
+            if bv.index(col) {
                 print!("{}", char.green());
             } else {
                 print!("{char}");
             }
         }
+
+        bv.clear();
         println!();
     }
 
