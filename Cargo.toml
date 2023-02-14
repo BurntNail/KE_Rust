@@ -16,4 +16,7 @@ path = "numbers/main.rs"
 
 [dependencies]
 color-eyre = "0.6.2"
+eframe = "0.21.2"
+egui = "0.21.0"
 owo-colors = "3.5.0"
+rand = "0.8.5"

@@ -1,5 +1,3 @@
-use std::ops::Index;
-
 type BackingType = u32;
 const BITS: usize = BackingType::BITS as usize;
 
