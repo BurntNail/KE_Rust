@@ -9,14 +9,14 @@ edition = "2021"
 name = "minigrep"
 path = "mingrep/main.rs"
 
-
-[[bin]]
-name = "number-guessing-game"
-path = "numbers/main.rs"
+# Numbers is in src
 
 [dependencies]
 color-eyre = "0.6.2"
+console_error_panic_hook = "0.1.7"
 eframe = "0.21.2"
 egui = "0.21.0"
+getrandom = { version = "0.2.8", features = ["js"] } # for rand support with wasm
 owo-colors = "3.5.0"
 rand = "0.8.5"
+wasm-bindgen-futures = "0.4.34"
