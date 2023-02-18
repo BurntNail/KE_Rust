@@ -9,6 +9,10 @@ edition = "2021"
 name = "minigrep"
 path = "mingrep/main.rs"
 
+[[bin]]
+name = "mandlebrot"
+path = "mandlebrot/main.rs"
+
 # Numbers is in src
 
 [dependencies]
