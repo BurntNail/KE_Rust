@@ -21,7 +21,8 @@ fn main() {
             let mut re: f32 = 0.0;
             let mut im: f32 = 0.0;
             let mut result = 0;
-            while re.hypot(im) < 2.0 && result < MAX_ITERS {
+
+            while re * re + im * im < 4.0 && result < MAX_ITERS {
                 re = re * re - im * im + real;
                 im = re * im + re * im + imaginary;
                 result += 1;
