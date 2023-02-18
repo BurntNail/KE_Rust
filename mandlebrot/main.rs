@@ -10,7 +10,7 @@ fn main() {
     const IM_START: f32 = -1.0;
     const IM_END: f32 = 1.0;
 
-    const MAX_ITERS: usize = 25;
+    const MAX_ITERS: u8 = 25;
 
     let mut v = Vec::with_capacity(WIDTH * HEIGHT);
     for y in 0..HEIGHT {
